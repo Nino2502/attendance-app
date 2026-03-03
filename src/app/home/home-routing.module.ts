@@ -6,6 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+    children: [
+      {
+        path: 'roles',
+        loadChildren: () =>
+         import('../pages/roles/roles.module')
+            .then(m => m.RolesPageModule)
+      }
+    ]
   }
 ];
 

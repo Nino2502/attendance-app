@@ -1,0 +1,35 @@
+<ion-content class="login-content">
+
+  <div class="login-container">
+
+    <div class="logo-section">
+      <ion-icon name="shield-checkmark-outline" class="logo-icon"></ion-icon>
+      <h2>Attendance System</h2>
+      <p>Inicia sesión para continuar</p>
+    </div>
+
+    <ion-item class="input-item">
+      <ion-input [(ngModel)]="email" type="email" placeholder="Correo electrónico">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input [(ngModel)]="password" type="password" placeholder="Contraseña">
+      </ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="login-btn" (click)="login()">
+      Iniciar Sesión
+    </ion-button>
+
+    <div class="register-link">
+      <span>¿No tienes cuenta?</span>
+      <br>
+      <a routerLink="/register">Regístrate</a>
+
+
+    </div>
+
+  </div>
+
+</ion-content>

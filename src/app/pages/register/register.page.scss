@@ -1,0 +1,64 @@
+.register-content {
+  --background: linear-gradient(135deg, #1e3c72, #2a5298);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-container {
+
+  width: 100%;
+  max-width: 380px;
+  margin: auto;
+  padding: 24px;
+  background: #ffffff;
+      margin-top: 100px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.logo-section {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.logo-icon {
+  font-size: 45px;
+  color: #2a5298;
+  margin-bottom: 8px;
+}
+
+.logo-section h2 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.logo-section p {
+  font-size: 14px;
+  color: #777;
+}
+
+.input-item {
+  margin-bottom: 14px;
+  border-radius: 10px;
+}
+
+.register-btn {
+  margin-top: 10px;
+  --background: #2a5298;
+  --border-radius: 10px;
+  font-weight: 600;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-link a {
+  margin-left: 5px;
+  color: #2a5298;
+  font-weight: 600;
+  text-decoration: none;
+}

@@ -1,0 +1,92 @@
+<ion-content class="register-content">
+
+  <div class="register-container">
+
+    <div class="logo-section">
+      <ion-icon name="person-add-outline" class="logo-icon"></ion-icon>
+      <h2>Crear Cuenta</h2>
+      <p>Registra un nuevo usuario</p>
+    </div>
+
+
+
+    <ion-item class="input-item">
+      <ion-input [(ngModel)]="name" name="name" placeholder="Nombre">
+      </ion-input>
+    </ion-item>
+
+    
+    <ion-item class="input-item">
+      <ion-input [(ngModel)]="lastName" name="lastName" placeholder="Apellido">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input [(ngModel)]="email" name="email" type="email" placeholder="Correo electrónico">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input [(ngModel)]="password" name="password" type="password" placeholder="Contraseña">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input [(ngModel)]="confirmPassword" name="confirmPassword" type="password"
+        placeholder="Confirmar contraseña">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Departamento</ion-label>
+      <ion-select [(ngModel)]="selectedDepartment" placeholder="Selecciona uno">
+
+        <ion-select-option *ngFor="let dept of departments" [value]="dept.id">
+
+          {{ dept.name }}
+
+        </ion-select-option>
+
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Rol</ion-label>
+      <ion-select [(ngModel)]="selectedRole" placeholder="Selecciona uno">
+
+        <ion-select-option *ngFor="let role of roles" [value]="role.id">
+
+          {{ role.name }}
+
+        </ion-select-option>
+
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Horario</ion-label>
+      <ion-select [(ngModel)]="selectedSchedule" placeholder="Selecciona uno">
+
+        <ion-select-option *ngFor="let sch of schedules" [value]="sch.id">
+
+          {{ sch.name }}
+
+        </ion-select-option>
+
+      </ion-select>
+    </ion-item>
+
+
+    <ion-button expand="block" class="register-btn" (click)="register()">
+      Registrarse
+    </ion-button>
+
+    <div class="login-link">
+      <span>¿Ya tienes cuenta?</span>
+      <a routerLink="/login">Inicia sesión</a>
+    </div>
+
+  </div>
+
+</ion-content>

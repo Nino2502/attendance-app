@@ -25,3 +25,12 @@
 #container a {
   text-decoration: none;
 }
+
+ion-split-pane {
+  --side-width: 250px;
+}
+
+ion-menu {
+  --background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+}
