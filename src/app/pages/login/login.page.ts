@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
 
+import { ToastrService } from 'ngx-toastr';
+
+
 
 @Component({
   selector: 'app-login',
@@ -18,7 +21,10 @@ export class LoginPage {
   password: string = '';
 
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private toastr: ToastrService
+  ) { }
 
   async login() {
 
@@ -32,22 +38,23 @@ export class LoginPage {
         }
       );
 
-      console.log('Respuesta backend:', response.data);
-
       // Guardar usuario en memoria local (temporal)
       localStorage.setItem('user', JSON.stringify(response.data));
 
-      this.router.navigate(['/home']);
+      this.toastr.success("Inicio de sesión exitosó");
+
+      setTimeout(() => {
+        this.router.navigate(['/home']);
+      }, 1500);
 
     } catch (error: any) {
 
       if (error.response?.status === 401) {
-        alert('Credenciales incorrectas');
+        this.toastr.warning('El usuario no existe en el sistema');
       } else {
         alert('Error de conexión con el servidor');
       }
 
-      console.error('Error login:', error);
 
     }
   }

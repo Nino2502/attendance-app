@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Router } from '@angular/router';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -41,7 +43,8 @@ export class RegisterPage implements OnInit {
     private roleService: Role,
     private scheduleService: Schedule,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -100,11 +103,19 @@ export class RegisterPage implements OnInit {
     this.http.post('http://localhost:8080/api/users', payload)
       .subscribe({
         next: (res) => {
+
+          this.toastr.success('Usuario creado correctamente', 'Success');
           console.debug("Usuario Creado", res);
-          this.router.navigate(['/login']);
+
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 1500);
+
         },
         error: (err) => {
-          console.error('Error Creado usuario', err);
+
+          this.toastr.error('No se pudo crear el usuario', 'Error');
+
         }
       });
 
