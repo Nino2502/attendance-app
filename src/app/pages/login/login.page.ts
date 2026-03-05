@@ -5,8 +5,6 @@ import axios from 'axios';
 
 import { ToastrService } from 'ngx-toastr';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,7 +13,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginPage {
 
-
   email: string = '';
 
   password: string = '';
@@ -23,9 +20,6 @@ export class LoginPage {
   emailError = false;
 
   passError = false;
-
-
-
 
   constructor(
     private router: Router,
@@ -36,12 +30,18 @@ export class LoginPage {
 
     try {
 
-      if(!this.email){
+      if (!this.email && !this.password) {
+        this.emailError = true;
+        this.passError = true;
+        return;
+      }
+
+      if (!this.email) {
         this.emailError = true;
         return;
       }
 
-      if(!this.password){
+      if (!this.password) {
         this.passError = true;
         return;
       }
@@ -72,10 +72,7 @@ export class LoginPage {
         alert('Error de conexión con el servidor');
       }
 
-
     }
   }
-
-
 
 }

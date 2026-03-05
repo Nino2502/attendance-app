@@ -14,22 +14,37 @@
       <ion-input [(ngModel)]="name" name="name" placeholder="Nombre">
       </ion-input>
     </ion-item>
+    <span *ngIf="nameError" class="error">
+      El nombre es obligatorio
+    </span>
 
-    
     <ion-item class="input-item">
       <ion-input [(ngModel)]="lastName" name="lastName" placeholder="Apellido">
       </ion-input>
     </ion-item>
+
+    <span *ngIf="lastNameError" class="error">
+      El apellido es obligatorio
+    </span>
 
     <ion-item class="input-item">
       <ion-input [(ngModel)]="email" name="email" type="email" placeholder="Correo electrónico">
       </ion-input>
     </ion-item>
 
+    <span *ngIf="emailError" class="error">
+      El correo es obligatorio
+    </span>
+
+
     <ion-item class="input-item">
       <ion-input [(ngModel)]="password" name="password" type="password" placeholder="Contraseña">
       </ion-input>
     </ion-item>
+
+    <span *ngIf="passwordError" class="error">
+      La contraseña es obligatorio
+    </span>
 
     <ion-item class="input-item">
       <ion-input [(ngModel)]="confirmPassword" name="confirmPassword" type="password"
@@ -50,6 +65,10 @@
       </ion-select>
     </ion-item>
 
+    <span *ngIf="depError" class="error">
+      El departamento es obligatorio
+    </span>
+
 
     <ion-item>
       <ion-label>Rol</ion-label>
@@ -63,6 +82,10 @@
 
       </ion-select>
     </ion-item>
+    
+    <span *ngIf="roleError" class="error">
+      El rol es obligatorio
+    </span>
 
     <ion-item>
       <ion-label>Horario</ion-label>
@@ -76,7 +99,9 @@
 
       </ion-select>
     </ion-item>
-
+    <span *ngIf="scheduleError" class="error">
+      El horario es obligatorio
+    </span>
 
     <ion-button expand="block" class="register-btn" (click)="register()">
       Registrarse

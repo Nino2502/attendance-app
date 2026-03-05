@@ -31,6 +31,18 @@ export class RegisterPage implements OnInit {
   password: string = '';
   confirmPassword: string = '';
 
+  nameError = false;
+  lastNameError = false;
+  emailError = false;
+  passwordError = false;
+
+  depError = false;
+
+  roleError = false;
+
+  scheduleError = false;
+
+
   selectedDepartment: any = null;
   selectedRole: any = null;
   selectedSchedule: any = null;
@@ -74,8 +86,7 @@ export class RegisterPage implements OnInit {
 
   register() {
 
-    if (this.password !== this.confirmPassword) {
-      console.debug("Las constraseñas no coinciden");
+    if (!this.validateForm()) {
       return;
     }
 
@@ -120,6 +131,67 @@ export class RegisterPage implements OnInit {
       });
 
 
+  }
+
+  validateEmail(email: string): boolean {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+  validateForm(): boolean {
+
+    // resetear errores
+    this.nameError = false;
+    this.lastNameError = false;
+    this.emailError = false;
+    this.passwordError = false;
+    this.depError = false;
+    this.roleError = false;
+    this.scheduleError = false;
+
+    let isValid = true;
+
+    if (!this.name || this.name.trim().length < 2) {
+      this.nameError = true;
+      isValid = false;
+    }
+
+    if (!this.lastName || this.lastName.trim().length < 2) {
+      this.lastNameError = true;
+      isValid = false;
+    }
+
+    if (!this.email || !this.validateEmail(this.email)) {
+      this.emailError = true;
+      isValid = false;
+    }
+
+    if (!this.password || this.password.length < 6) {
+      this.passwordError = true;
+      isValid = false;
+    }
+
+    if (this.password !== this.confirmPassword) {
+      this.toastr.warning('Las contraseñas no coinciden');
+      isValid = false;
+    }
+
+    if (!this.selectedDepartment) {
+      this.depError = true;
+      isValid = false;
+    }
+
+    if (!this.selectedRole) {
+      this.roleError = true;
+      isValid = false;
+    }
+
+    if (!this.selectedSchedule) {
+      this.scheduleError = true;
+      isValid = false;
+    }
+
+    return isValid;
   }
 
 
