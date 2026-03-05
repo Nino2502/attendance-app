@@ -20,6 +20,12 @@ export class LoginPage {
 
   password: string = '';
 
+  emailError = false;
+
+  passError = false;
+
+
+
 
   constructor(
     private router: Router,
@@ -29,6 +35,17 @@ export class LoginPage {
   async login() {
 
     try {
+
+      if(!this.email){
+        this.emailError = true;
+        return;
+      }
+
+      if(!this.password){
+        this.passError = true;
+        return;
+      }
+
 
       const response = await axios.post(
         'http://localhost:8080/api/users/login',

@@ -12,11 +12,19 @@
       <ion-input [(ngModel)]="email" type="email" placeholder="Correo electrónico">
       </ion-input>
     </ion-item>
+    <span *ngIf="emailError" class="error">
+      El correo es obligatorio
+
+    </span>
 
     <ion-item class="input-item">
       <ion-input [(ngModel)]="password" type="password" placeholder="Contraseña">
       </ion-input>
     </ion-item>
+
+    <span *ngIf="passError" class="error">
+      La contraseña es obligatorio
+    </span>
 
     <ion-button expand="block" class="login-btn" (click)="login()">
       Iniciar Sesión
